@@ -15,13 +15,14 @@ docker compose up --build
 
 **You should now see your project on:**
 ```bash
-http://localhost/
+http://localhost
 ```
 
 
 
 # Run the PHPUnit tests
 - **Run command:** `docker exec -it laravel-app vendor/bin/phpunit tests/Unit/ProductControllerTest.php`
+
 
 The results of the tests should be visible in the terminal.
 
