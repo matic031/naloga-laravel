@@ -9,9 +9,13 @@
    git clone https://github.com/matic031/naloga-laravel.git
   ```
 **Go to the project directory and build with docker:**
-
 ```bash
    docker compose up --build
+  ```
+
+**You should now see your project on:**
+```bash
+   http://localhost/
   ```
 
 
