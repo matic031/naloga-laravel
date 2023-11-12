@@ -8,6 +8,11 @@
 ```bash
    git clone https://github.com/matic031/naloga-laravel.git
   ```
+    Go to the project directory and build with docker:
+
+    ```bash
+   docker compose up --build
+  ```
 
 
 
