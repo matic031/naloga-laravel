@@ -1,0 +1,289 @@
+body {
+    background-color: #1a202c;
+    font-family: 'Roboto', sans-serif;
+}
+
+.mb-4 {
+    margin-bottom: 1rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.heading-container {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.text-2xl {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.text-2xl {
+    font-size: 1.5rem;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.btn-create {
+    background-color: #4c59af;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-left: auto;
+    margin-top: 0.7rem;
+}
+
+.btn-create:hover {
+    background-color: #282ca3;
+}
+
+.table {
+    width: 80%; 
+    border-collapse: collapse;
+    margin: 1rem auto;
+}
+
+.action-column {
+    width: 10%;
+ }
+
+th, td {
+    padding: 0.5rem;
+    border: 1px solid #4a5568;
+}
+
+.price {
+    text-align: center;
+}
+
+.action {
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+
+}
+
+.btn-edit {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: darkgreen;
+}
+
+.btn-delete {
+    background-color: #e53e3e;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: darkred;
+    color: #fff;
+}
+
+.bg-gray-800 {
+    background-color: #1a202c;
+}
+
+.border-t {
+    border-top: 1px solid #4a5568;
+}
+
+.hover\:bg-blue-700:hover {
+    background-color: #4299e1;
+}
+
+.hover\:bg-red-700:hover {
+    background-color: #fc8181;
+}
+
+.text-white {
+    color: #fff;
+}
+
+
+/* Edit form------------------- */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it's above other content */
+}
+
+.edit-modal {
+    width: 60%; 
+    max-width: 700px; 
+    margin: auto;
+    overflow: hidden;
+    background-color: #2a2a2a; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    text-align: center;
+}
+
+.modal-input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto; 
+    border: none;
+    border-radius: 4px;
+    display: block; 
+}
+
+.modal-header, .modal-footer {
+    margin-bottom: 15px;
+}
+
+.btn-update {
+    background-color: #4CAF50; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; 
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto;
+}
+
+.btn-update:hover {
+    background-color: #39853d;
+}
+
+
+
+
+/* Delete modal------------------- */
+.delete-modal {
+    width: 40%; 
+    max-width: 500px; 
+    margin: auto;
+    overflow: hidden;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    padding: 20px;
+}
+
+.delete-modal p {
+    font-size: 20px;
+    margin-bottom: 20px; 
+}
+
+.btn-close {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto; 
+}
+
+.btn-close:hover {
+    background-color: #2e6b31;
+}
+
+.btn-createnew {
+    background-color: #4c59af;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    padding: 15px 30px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: auto; 
+}
+
+.btn-createnew:hover {
+    background-color: #202383;
+}
+
+
+
+
+
+/* Create modal------------------- */
+.create-modal {
+    width: 50%;
+    max-width: 600px; 
+    margin: auto;
+    overflow: hidden;
+    background-color: #2a2a2a; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Adding shadow */
+    text-align: center; 
+}
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: white;
+}
+
+.alert-success {
+    background-color: #4CAF50;
+}
+
+.alert-danger {
+    background-color: #f44336;
+}
+
+.error {
+    color: #f44336;
+    margin-bottom: 10px; 
+    display: block;
+}

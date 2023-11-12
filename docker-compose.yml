@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  webserver:
+    build:
+      context: .
+      target: webserver
+    container_name: laravel-webserver
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+
+  app:
+    build:
+      context: .
+      target: app
+    container_name: laravel-app
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    working_dir: /var/www/html
+    environment:
+      APP_NAME: Laravel
+      APP_ENV: local
+      APP_KEY: base64:v2DIumTK8JvA4bESPOKL+1y1JtAqViGrDA1H/LX2sls=
+      APP_DEBUG: 'true'
+      APP_URL: http://localhost
+      LOG_CHANNEL: stack
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: naloga_laravel
+      DB_USERNAME: root
+      DB_PASSWORD: nalogaLaravel123
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: naloga_laravel
+      MYSQL_ROOT_PASSWORD: nalogaLaravel123
+    ports:
+      - "3306:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+
+
+volumes:
+  dbdata:
