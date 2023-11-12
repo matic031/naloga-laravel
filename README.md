@@ -23,6 +23,8 @@ http://localhost/
 # Run the PHPUnit tests
 - **Run command:** `docker exec -it laravel-app vendor/bin/phpunit tests/Unit/ProductControllerTest.php`
 
+The results of the tests should be visible in the terminal.
+
 # Test the API
 
 ### List All Products
