@@ -6,9 +6,7 @@ WORKDIR /var/www/html
 
 # Install Node.js and npm
 RUN apt-get update && \
-    apt-get install -y nodejs && \
-    apt-get install -y npm
-
+    apt-get install -y nodejs npm
 
 # Install PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -20,8 +18,20 @@ RUN apt-get update && apt-get install -y \
     libgd-dev \
     && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# Install and enable PHP OPCache extension
+RUN docker-php-ext-install opcache && \
+    docker-php-ext-enable opcache
+
+# Configure OPCache (optional, based on your requirements)
+# Add these lines to set your OPCache configuration
+# RUN { \
+#     echo 'opcache.memory_consumption=128'; \
+#     echo 'opcache.interned_strings_buffer=8'; \
+#     echo 'opcache.max_accelerated_files=4000'; \
+#     echo 'opcache.revalidate_freq=2'; \
+#     echo 'opcache.fast_shutdown=1'; \
+#     echo 'opcache.enable_cli=1'; \
+# } > /usr/local/etc/php/conf.d/opcache-recommended.ini
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -36,13 +46,6 @@ RUN mkdir -p storage/framework/sessions storage/framework/views storage/framewor
     && mkdir -p bootstrap/cache \
     && chown -R www-data:www-data bootstrap/cache \
     && chmod -R 775 bootstrap/cache
-
-# Set the correct permissions for Laravel
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
-
-# Install application dependencies
-RUN composer install --optimize-autoloader --no-dev
 
 # Set environment variables
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
@@ -64,7 +67,7 @@ COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 
-# Expose port 8080
+# Expose port 80
 EXPOSE 80
 
 # Set labels
@@ -73,10 +76,9 @@ LABEL version="1.0"
 LABEL description="Docker image for running Laravel app with MySQL"
 
 # Start Apache server
-CMD ["apache2-foreground", "npm run dev"]
+CMD ["apache2-foreground"]
 
-
-
+# Stage 2: Setup webserver using Apache
 FROM httpd:2.4 as webserver
 
 # Copy Apache configuration file into the container
